@@ -21,7 +21,7 @@ const Pirates = ({ pirates }: Props) => {
 
       {pirates.map((pirate: any) => {
         return (
-          <Link href={"/ninjas/" + pirate.id} key={pirate.id}>
+          <Link href={"/pirates/" + pirate.id} key={pirate.id}>
             <a>
               <h3>{pirate.name}</h3>
             </a>

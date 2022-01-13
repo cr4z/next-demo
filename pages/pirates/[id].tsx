@@ -20,17 +20,17 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   const data = await res.json();
 
   return {
-    props: { ninja: data },
+    props: { pirate: data },
   };
 };
 
-export default function Details({ ninja }: any): ReactElement {
+export default function Details({ pirate }: any): ReactElement {
   return (
     <div>
-      <h1>{ninja.name}</h1>
-      <p>{ninja.email}</p>
-      <p>{ninja.website}</p>
-      <p>{ninja.address.city}</p>
+      <h1>{pirate.name}</h1>
+      <p>{pirate.email}</p>
+      <p>{pirate.website}</p>
+      <p>{pirate.address.city}</p>
     </div>
   );
 }

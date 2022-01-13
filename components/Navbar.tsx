@@ -14,7 +14,7 @@ export default function Navbar(): ReactElement {
         <a>About</a>
       </Link>
       <Link href="/pirates">
-        <a>Ninja Listing</a>
+        <a>Pirates Listing</a>
       </Link>
     </nav>
   );
