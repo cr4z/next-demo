@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import React, { ReactElement } from "react";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -14,10 +14,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export default function Details(): ReactElement {
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  const id = context.params?.id;
+  const res = await fetch("https://jsonplaceholder.typicode.com/users/" + id);
+  const data = await res.json();
+
+  return {
+    props: { ninja: data },
+  };
+};
+
+export default function Details({ ninja }: any): ReactElement {
   return (
     <div>
-      <h1>Details</h1>
+      <h1>{ninja.name}</h1>
+      <p>{ninja.email}</p>
+      <p>{ninja.website}</p>
+      <p>{ninja.address.city}</p>
     </div>
   );
 }

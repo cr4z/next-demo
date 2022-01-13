@@ -11,12 +11,12 @@ export default function Error404({}: Props): ReactElement {
     setTimeout(() => {
       router.push("/");
     }, 3000);
-  }, []);
+  }, [router]);
 
   return (
     <div>
       <h1>Oops....</h1>
-      <h2>This page cannot be found.</h2>
+      <h2>This page cannot be found. Rerouting you back to homepage...</h2>
       <p>
         Go back to the{" "}
         <Link href="/">
