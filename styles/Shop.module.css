@@ -1,0 +1,313 @@
+.backgroundCity {
+    background: url("/images/LA.jpg") no-repeat fixed;
+    background-size: cover;
+}
+
+/** --------------- HEADER --------------- **/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10rem;
+}
+
+.header div {
+    flex: 0 0 33%;
+    text-align: end;
+}
+
+.header a {
+    color: white;
+}
+
+.logoContainer {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 290px;
+    height: 290px;
+    cursor: pointer;
+}
+
+.icons {
+    padding: 1.5rem;
+}
+
+/** --------------- SHOP CONTENT --------------- **/
+
+.shopContent {
+    background-color: white;
+    min-height: 80vh;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    box-shadow: var(--box-shadow);
+    opacity: 0.95;
+}
+
+.grid {
+    display: grid;
+    padding: 1rem;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/** --------------- SHOP CONTROLS --------------- **/
+
+.shopControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    font-family: var(--label-font);
+    letter-spacing: 1px;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    padding: 0 1rem;
+}
+
+.shopControls div {
+    margin-top: .3rem;
+    margin-bottom: .4rem;
+}
+
+.shopControls a {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+.shopControls a span {
+    margin-right: 4px;
+}
+
+/** --------------- CUSTOM DROPDOWN --------------- **/
+
+.menuBtn {
+    cursor: pointer;
+    margin-top: .3rem;
+    margin-bottom: .4rem;
+    position: relative;
+
+    color: var(--color-black);
+}
+
+.dropdownArrow {
+    display: inline-flex;
+    margin-left: 5px;
+    margin-bottom: 1px;
+    transition: all .1s ease;
+}
+
+.dropdown {
+    height: 0px;
+    overflow: hidden;
+
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+
+    top: 1.1rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50vw;
+
+    transition: all .3s ease-in-out;
+}
+
+.dropdown li a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: var(--color-black);
+    padding: 1.5rem 0px;
+}
+
+.dropdown li a:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 1px;
+    transform: scaleX(0) translateY(1.8rem);
+    left: 25%;
+    background-color: var(--color-black);
+    transition: transform 0.3s ease-out;
+}
+
+.dropdown li a:hover:after {
+    transform: scaleX(1) translateY(1.8rem);
+}
+
+/** --------------- SHOP CARDS --------------- **/
+
+.card {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 450px;
+    background-image: url("/images/card.png") center center;
+    background-size: cover;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* image box */
+.card .imgBx {
+    position: absolute;
+    top: 10%;
+    z-index: 10000;
+    width: 100%;
+    height: 200px;
+}
+
+.card .imgBx img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 270px;
+}
+
+.card .imgBx h2 {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    text-align: center;
+    top: 150px;
+}
+
+/* content box */
+.card .contentBx {
+    position: absolute;
+    bottom: 45px;
+    width: 100%;
+    text-align: center;
+    transition: 1s;
+    z-index: 10;
+}
+
+
+.card .contentBx .size,
+.card .contentBx .color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    transition: 0.5s;
+}
+
+.card .contentBx .size h3,
+.card .contentBx .color h3 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+
+.card .contentBx .size span {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    background: #fff;
+    margin: 0 5px;
+    transition: 0.5s;
+    border-radius: 4px;
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+.card .contentBx a:hover,
+.card .contentBx .size span:hover {
+    background: silver;
+    transition: 0.2s;
+}
+
+.card .contentBx .color span {
+    width: 20px;
+    height: 20px;
+    background: #ff0;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: 0.5s;
+}
+
+.card .contentBx .color span:nth-child(2) {
+    background: white;
+}
+
+.card .contentBx .color span:nth-child(3) {
+    background: #000;
+}
+
+.card .contentBx .color span:nth-child(4) {
+    background-color: #d7d7d7;
+    background-image: linear-gradient(147deg, #ddd 25%, #777 70%);
+
+}
+
+.card .contentBx a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #111;
+}
+
+
+/** --------------- RESPONSIVE ELEMENTS --------------- **/
+
+/* iPads and up (portrait and landscape) ----------- */
+@media only screen and (min-width : 640px) {
+
+    .shopContent,
+    .header {
+        width: 80vw;
+        margin: auto;
+    }
+
+    .shopContent hr {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+/* TVs (maximum) ----------- */
+@media only screen and (min-width : 1824px) {
+
+    .shopContent,
+    .header {
+        width: 60vw;
+        margin: auto;
+    }
+}
+
+
+/** --------------- FOOTER --------------- **/
+
+.footer {
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}

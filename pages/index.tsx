@@ -1,34 +1,25 @@
-import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import styles from "../styles/Home.module.css";
+import React from "react";
+const video = "/videos/PexelsVideos2282013.mp4";
+const logo = "/images/logo.png";
+import styles from "../styles/Splash.module.css";
 
-export default function Home() {
+export default function Splash() {
   return (
-    <>
-      <Head>
-        <title>Pirate List | Home</title>
-        <meta name="keywords" content="ninjas" />
-      </Head>
-      <div>
-        <h1>Homepage</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor debitis natus
-          architecto dolores delectus ullam nam cum quam ipsam? Commodi mollitia eligendi
-          necessitatibus magnam maxime ipsum, nobis voluptate iste?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor debitis natus
-          architecto dolores delectus ullam nam cum quam ipsam? Commodi mollitia eligendi
-          necessitatibus magnam maxime ipsum, nobis voluptate iste?
-        </p>
+    <section className={styles.splash}>
+      <video src={video} autoPlay muted loop />
 
-        <Link href="/ninjas">
-          <a>See Ninja Listing</a>
-        </Link>
+      <div className={styles.overlay}>
+        <div className={styles.imgContainer}>
+          <Image width={650} height={550} className={styles.img} src={logo} alt="logo" priority />
+        </div>
+
+        <div className={styles.btnContainer}>
+          <a href="shop" onClick={() => {}} className={styles.btn}>
+            View Shop
+          </a>
+        </div>
       </div>
-    </>
+    </section>
   );
 }
