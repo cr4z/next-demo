@@ -9,6 +9,7 @@
     background-size: cover;
     border-radius: 5px;
     overflow: hidden;
+    color: #fff;
 }
 
 /* image box */
@@ -32,7 +33,6 @@
 .card .contentBx {
     font-weight: 600;
     letter-spacing: 1px;
-    color: #fff;
     text-align: center;
     top: 150px;
 
@@ -73,7 +73,6 @@
 
 .card .contentBx .size h3,
 .card .contentBx .color h3 {
-    color: #fff;
     font-weight: 500;
     font-size: 14px;
     text-transform: uppercase;

@@ -5,7 +5,7 @@ import Card from "../../components/card";
 import { URLSearchParams } from "url";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const url = "http://localhost:3000/api/products/?category=deck";
+  const url = "http://localhost:3000/api/products/?category=trucks";
   const options = {
     method: "GET",
     headers: {
@@ -22,18 +22,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
       props: {},
     };
   } else {
-    let decks = await res.json();
+    let trucks = await res.json();
     return {
-      props: { decks },
+      props: { trucks },
     };
   }
 };
 
-export default function decks({ decks }: any): ReactElement {
+export default function Trucks({ trucks }: any): ReactElement {
   return (
     <Shop>
-      {decks &&
-        decks.data.map((product: any, index: any) => {
+      {trucks &&
+        trucks.data.map((product: any, index: any) => {
           return <Card key={index} title={product.name} imgPath={product.imgPath} />;
         })}
     </Shop>

@@ -81,7 +81,7 @@ export default function Shop({ children }: any) {
                   <Link href={"/shop/trucks"}>trucks</Link>
                 </li>
                 <li>
-                  <Link href={"/shop/decks"}>wheels</Link>
+                  <Link href={"/shop/wheels"}>wheels</Link>
                 </li>
                 <li>
                   <Link href={"/shop/bearings"}>bearings</Link>
@@ -100,9 +100,7 @@ export default function Shop({ children }: any) {
 
         <hr />
 
-        <div className={styles.grid}>
-          {children}
-        </div>
+        <div className={styles.grid}>{children}</div>
       </section>
 
       <footer className={styles.footer}>
@@ -114,4 +112,3 @@ export default function Shop({ children }: any) {
     </div>
   );
 }
-
