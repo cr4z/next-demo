@@ -1,30 +1,15 @@
-import React, { useState, useRef } from "react";
-import styles from "../../styles/Shop.module.css";
+import React, { useState, useRef, Children } from "react";
+import styles from "../styles/Shop.module.css";
 const logo = "/images/logo.png";
 const city = "/images/LA.jpg";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faInfo, faUser, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faUser, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { clientPromise } from "../../lib/mongodb.js";
-import { GetServerSideProps, GetServerSidePropsResult } from "next";
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const client = await clientPromise;
-
-  const db = client.db("nextSkateShopDB");
-
-  let products = await db.collection("products").find({}).toArray();
-  products = JSON.parse(JSON.stringify(products));
-
-  return {
-    props: { products },
-  };
-};
-
-export default function Shop({ products }: any) {
+export default function Shop({ children }: any) {
   const [mouseIsOnDiv, setMouseIsOnDiv] = useState<Boolean>(false);
   const dropdownRef = useRef<any>(null);
   const conditionalStyle = 4;
@@ -81,7 +66,7 @@ export default function Shop({ products }: any) {
               onMouseEnter={() => OnMouseEnter()}
               onMouseLeave={() => OnMouseExit()}
             >
-              Trucks
+              Decks
               <FontAwesomeIcon
                 className={styles.dropdownArrow}
                 style={isOpen ? { transform: "rotate(90deg)" } : { transform: "rotate(0deg)" }}
@@ -90,16 +75,16 @@ export default function Shop({ products }: any) {
               />
               <ul className={styles.dropdown} ref={dropdownRef}>
                 <li>
-                  <Link href={"/decks"}>decks</Link>
+                  <Link href={"/shop/decks"}>decks</Link>
                 </li>
                 <li>
-                  <Link href={"/trucks"}>trucks</Link>
+                  <Link href={"/shop/trucks"}>trucks</Link>
                 </li>
                 <li>
-                  <Link href={"/wheels"}>wheels</Link>
+                  <Link href={"/shop/decks"}>wheels</Link>
                 </li>
                 <li>
-                  <Link href={"/bearings"}>bearings</Link>
+                  <Link href={"/shop/bearings"}>bearings</Link>
                 </li>
               </ul>
             </div>
@@ -115,16 +100,8 @@ export default function Shop({ products }: any) {
 
         <hr />
 
-        <div>
-          {products.map((product: any, index: any) => {
-            return (
-              <div className="card" key={index}>
-                <h2>{product.name}</h2>
-                <p>{product.email}</p>
-                <p>{product.mobile}</p>
-              </div>
-            );
-          })}
+        <div className={styles.grid}>
+          {children}
         </div>
       </section>
 
@@ -138,41 +115,3 @@ export default function Shop({ products }: any) {
   );
 }
 
-function Decks() {
-  return (
-    <>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-    </>
-  );
-}
-
-function ProductCard() {
-  return (
-    <div className={styles.card}>
-      <div className={styles.imgBx}>
-        <Image src="/images/trucks.png" layout="fill" alt="trucks" />
-        <h2>Grinding Trucks</h2>
-      </div>
-      <div className={styles.contentBx}>
-        <div className={styles.size}>
-          <h3>Size:</h3>
-          <span>7</span>
-          <span>8</span>
-          <span>9</span>
-          <span>10</span>
-        </div>
-
-        <div className={styles.color}>
-          <h3>Color:</h3>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <a href="#">Buy Now</a>
-      </div>
-    </div>
-  );
-}

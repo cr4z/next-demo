@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 const video = "/videos/PexelsVideos2282013.mp4";
 const logo = "/images/logo.png";
@@ -15,9 +16,9 @@ export default function Splash() {
         </div>
 
         <div className={styles.btnContainer}>
-          <a href="shop" onClick={() => {}} className={styles.btn}>
-            View Shop
-          </a>
+          <Link href="/shop/decks">
+            <a className={styles.btn}>View Shop</a>
+          </Link>
         </div>
       </div>
     </section>
