@@ -1,10 +1,7 @@
 import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Please add your Mongo URI to .env.local");
-}
-
-const uri = process.env.MONGODB_URI;
+const uri =
+  "mongodb+srv://stevencr4z:5HZxhjfCj3PYqbn@thecluster.rvcf3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
