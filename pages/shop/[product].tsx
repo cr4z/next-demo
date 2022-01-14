@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import styles from "../styles/Shop.module.css";
+import styles from "../../styles/Shop.module.css";
 const logo = "/images/logo.png";
 const city = "/images/LA.jpg";
 import Link from "next/link";
@@ -8,8 +8,23 @@ import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faInfo, faUser, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { clientPromise } from "../../lib/mongodb.js";
+import { GetServerSideProps, GetServerSidePropsResult } from "next";
 
-function Shop() {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const client = await clientPromise;
+
+  const db = client.db("nextSkateShopDB");
+
+  let products = await db.collection("products").find({}).toArray();
+  products = JSON.parse(JSON.stringify(products));
+
+  return {
+    props: { products },
+  };
+};
+
+export default function Shop({ products }: any) {
   const [mouseIsOnDiv, setMouseIsOnDiv] = useState<Boolean>(false);
   const dropdownRef = useRef<any>(null);
   const conditionalStyle = 4;
@@ -100,7 +115,17 @@ function Shop() {
 
         <hr />
 
-        {/* TODO: Add routing */}
+        <div>
+          {products.map((product: any, index: any) => {
+            return (
+              <div className="card" key={index}>
+                <h2>{product.name}</h2>
+                <p>{product.email}</p>
+                <p>{product.mobile}</p>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <footer className={styles.footer}>
@@ -112,8 +137,6 @@ function Shop() {
     </div>
   );
 }
-
-export default Shop;
 
 function Decks() {
   return (
