@@ -6,7 +6,7 @@ import Card from "../../components/card";
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const url = "http://" + context.req.headers.host + "/api/products/?category=deck";
+  const url = "http://" + context.req.headers.host + "/api/products";
   const options = {
     method: "GET",
     headers: {
@@ -17,6 +17,7 @@ export const getServerSideProps: GetServerSideProps = async (
   console.log("heyooooo", url);
 
   let res = await fetch(url, options);
+  return res;
 
   if (res.status == 400) {
     console.log("Category was not found in database");

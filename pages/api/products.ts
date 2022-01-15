@@ -1,3 +1,4 @@
+import { send } from "process";
 import { clientPromise } from "../../database/mongodb";
 
 export default async function handler(req: any, res: any) {
@@ -10,16 +11,18 @@ export default async function handler(req: any, res: any) {
   console.log("C");
 
   if (req.method === "GET") {
-    console.log("D");
-    const products = await db.collection("products").find({ category }).toArray();
+    res.send("hey man");
 
-    console.log("E");
-    if (products == "F") {
-      console.log("G");
-      res.status(400).send("Category was not found in database");
-    } else {
-      console.log("H");
-      res.json({ status: 200, data: products });
-    }
+    // console.log("D");
+    // const products = await db.collection("products").find({ category }).toArray();
+
+    // console.log("E");
+    // if (products == "F") {
+    //   console.log("G");
+    //   res.status(400).send("Category was not found in database");
+    // } else {
+    //   console.log("H");
+    //   res.json({ status: 200, data: products });
+    // }
   }
 }
