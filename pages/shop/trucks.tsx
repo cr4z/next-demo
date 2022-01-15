@@ -1,11 +1,13 @@
 import React, { ReactElement } from "react";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Shop from "../../components/shop";
 import Card from "../../components/card";
 import { URLSearchParams } from "url";
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const url = "/api/products/?category=trucks";
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const url = context.req.headers.host + "/api/products/?category=trucks";
   const options = {
     method: "GET",
     headers: {
