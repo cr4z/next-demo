@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async (
   console.log(res);
 
   return {
-    props: { res },
+    props: { decks: null },
   };
 
   if (res.status == 400) {
