@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-console.log("Request received!")
+console.log("Request received!");
 
 const uri = process.env.MONGODB_URI;
 
