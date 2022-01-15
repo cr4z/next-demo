@@ -17,7 +17,12 @@ export const getServerSideProps: GetServerSideProps = async (
   console.log("heyooooo", url);
 
   let res = await fetch(url, options);
-  return res;
+
+  console.log(res);
+
+  return {
+    props: { res },
+  };
 
   if (res.status == 400) {
     console.log("Category was not found in database");
