@@ -4,8 +4,6 @@ console.log("before getting env var");
 
 const uri = process.env.MONGODB_URI;
 
-alert(process.env.MONGODB_URI);
-
 if (!uri) {
   throw new Error("Please add .env.local with MONGODB_URI");
 }
