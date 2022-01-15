@@ -1,5 +1,7 @@
 import { MongoClient } from "mongodb";
 
+console.log("before getting env var");
+
 const uri = process.env.MONGODB_URI;
 
 alert(process.env.MONGODB_URI);
