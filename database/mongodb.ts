@@ -11,9 +11,6 @@ const options: any = {
   useNewUrlParser: true,
 };
 
-let client;
-export let clientPromise: any;
-
 // In production mode, it's best to not use a global variable.
-client = new MongoClient(uri, options);
-clientPromise = client.connect();
+const client = new MongoClient(uri, options);
+export const clientPromise = client.connect();
