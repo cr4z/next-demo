@@ -5,7 +5,7 @@ import Card from "../../components/card";
 import { URLSearchParams } from "url";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const url = "http://localhost:3000/api/products/?category=wheels";
+  const url = "/api/products/?category=wheels";
   const options = {
     method: "GET",
     headers: {
