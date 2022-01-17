@@ -6,7 +6,8 @@ import Card from "../../components/card";
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const url = "http://" + context.req.headers.host + "/api/products/?category=deck";
+  const url = process.env.BASE_URL + "/api/products/?category=deck";
+
   const options = {
     method: "GET",
     headers: {
