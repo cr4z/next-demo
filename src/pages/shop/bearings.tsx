@@ -2,16 +2,11 @@ import React, { ReactElement } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Shop from "../../components/shop";
 import Card from "../../components/card";
+import ShopAPI from "../../utils/shopAPI";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const url = process.env.BASE_URL + "/api/products/?category=trucks";
-
-  const options = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  const url = ShopAPI.GetRequestURL("bearings");
+  const options = ShopAPI.GetRequestOptions;
 
   let res = await fetch(url, options);
 
@@ -22,18 +17,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
       props: {},
     };
   } else {
-    let trucks = await res.json();
+    let bearings = await res.json();
     return {
-      props: { trucks },
+      props: { bearings },
     };
   }
 };
 
-export default function Trucks({ trucks }: any): ReactElement {
+export default function bearings({ bearings }: any): ReactElement {
   return (
     <Shop>
-      {trucks &&
-        trucks.data.map((product: any, index: any) => {
+      {bearings &&
+        bearings.data.map((product: any, index: any) => {
           return <Card key={index} title={product.name} imgPath={product.imgPath} />;
         })}
     </Shop>
