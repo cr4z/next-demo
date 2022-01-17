@@ -4,7 +4,7 @@ import Shop from "../../components/shop";
 import Card from "../../components/card";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const url = process.env.BASE_URL + "/api/products/?category=deck";
+  const url = process.env.BASE_URL + "/api/products/?category=bearings";
 
   const options = {
     method: "GET",
