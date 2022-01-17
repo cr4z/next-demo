@@ -2,12 +2,10 @@ import React, { ReactElement } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Shop from "../../components/shop";
 import Card from "../../components/card";
-import { URLSearchParams } from "url";
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const url = context.req.headers.host + "/api/products/?category=wheels";
+export const getServerSideProps: GetServerSideProps = async () => {
+  const url = process.env.BASE_URL + "/api/products/?category=wheels";
+
   const options = {
     method: "GET",
     headers: {

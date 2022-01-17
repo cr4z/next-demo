@@ -3,10 +3,9 @@ import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Shop from "../../components/shop";
 import Card from "../../components/card";
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const url = context.req.headers.host + "/api/products/?category=bearings";
+export const getServerSideProps: GetServerSideProps = async () => {
+  const url = process.env.BASE_URL + "/api/products/?category=deck";
+
   const options = {
     method: "GET",
     headers: {
