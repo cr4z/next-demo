@@ -1,13 +1,12 @@
-import React, { useState, useRef, Children } from "react";
+import React, { useState, useRef, Children, ReactElement, useEffect } from "react";
 import styles from "../styles/Shop.module.css";
 const logo = "/images/logo.png";
-const city = "/images/LA.jpg";
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faUser, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import ProductView from "../components/ProductView";
 
 export default function Shop({ children }: any) {
   const [mouseIsOnDiv, setMouseIsOnDiv] = useState<Boolean>(false);
@@ -15,7 +14,9 @@ export default function Shop({ children }: any) {
   const conditionalStyle = 4;
   const [isOpen, setIsOpen] = useState<Boolean>(false);
 
-  function OnMouseDown() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("decks");
+
+  function onCategoryMenuBtnClick() {
     if (dropdownRef.current.style.height === "" && mouseIsOnDiv) {
       setIsOpen(true);
       conditionalStyle;
@@ -26,19 +27,19 @@ export default function Shop({ children }: any) {
     }
   }
 
-  function OnMouseEnter() {
+  function onMouseEnter() {
     setMouseIsOnDiv(true);
   }
-  function OnMouseExit() {
+  function onMouseExit() {
     setMouseIsOnDiv(false);
   }
 
   return (
-    <div className={styles.backgroundCity} onMouseDown={() => OnMouseDown()}>
+    <div className={styles.backgroundCity} onMouseDown={() => onCategoryMenuBtnClick()}>
       <header className={styles.header}>
         <div></div>
 
-        <div className={styles.logoContainer}>
+        <div className={styles.logoContainer + " fadeIn"}>
           <Link href="/" passHref={true}>
             <Image src={logo} layout="fill" alt="logo" priority />
           </Link>
@@ -63,10 +64,10 @@ export default function Shop({ children }: any) {
           <div>
             <div
               className={styles.menuBtn}
-              onMouseEnter={() => OnMouseEnter()}
-              onMouseLeave={() => OnMouseExit()}
+              onMouseEnter={() => onMouseEnter()}
+              onMouseLeave={() => onMouseExit()}
             >
-              Decks
+              {selectedCategory}
               <FontAwesomeIcon
                 className={styles.dropdownArrow}
                 style={isOpen ? { transform: "rotate(90deg)" } : { transform: "rotate(0deg)" }}
@@ -74,17 +75,17 @@ export default function Shop({ children }: any) {
                 icon={faChevronRight}
               />
               <ul className={styles.dropdown} ref={dropdownRef}>
-                <li>
-                  <Link href={"/shop/decks"}>decks</Link>
+                <li onClick={() => setSelectedCategory("decks")}>
+                  <a>decks</a>
                 </li>
-                <li>
-                  <Link href={"/shop/trucks"}>trucks</Link>
+                <li onClick={() => setSelectedCategory("trucks")}>
+                  <a>trucks</a>
                 </li>
-                <li>
-                  <Link href={"/shop/wheels"}>wheels</Link>
+                <li onClick={() => setSelectedCategory("wheels")}>
+                  <a>wheels</a>
                 </li>
-                <li>
-                  <Link href={"/shop/bearings"}>bearings</Link>
+                <li onClick={() => setSelectedCategory("bearings")}>
+                  <a>bearings</a>
                 </li>
               </ul>
             </div>
@@ -100,7 +101,9 @@ export default function Shop({ children }: any) {
 
         <hr />
 
-        <div className={styles.grid}>{children}</div>
+        <div className={styles.grid}>
+          <ProductView selectedProduct={selectedCategory} />
+        </div>
       </section>
 
       <footer className={styles.footer}>

@@ -8,10 +8,10 @@ type CardProps = {
 
 export default function Card({ title, imgPath }: CardProps) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card + " fadeIn"}>
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image src={imgPath} layout="fill" alt="trucks" />
+          <Image className="fadeIn" src={imgPath} layout="fill" alt="trucks" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}

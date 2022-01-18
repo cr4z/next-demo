@@ -16,7 +16,7 @@ export default function Splash() {
         </div>
 
         <div className={styles.btnContainer}>
-          <Link href="/shop/decks">
+          <Link href="/shop">
             <a className={styles.btn}>View Shop</a>
           </Link>
         </div>
