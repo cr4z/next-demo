@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import Card from "./card";
+import DeckCard from "./card";
 
 interface IProps {
   selectedProduct: string;
@@ -33,7 +33,14 @@ export default function ProductView({ selectedProduct }: IProps): ReactElement {
     <>
       {productArray &&
         productArray.map((product: any, index: any) => {
-          return <Card key={index} title={product.name} imgPath={product.imgPath} />;
+          return (
+            <DeckCard
+              key={index}
+              desc={product.desc}
+              title={product.name}
+              imgPath={product.imgPath}
+            />
+          );
         })}
     </>
   );

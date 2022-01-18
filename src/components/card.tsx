@@ -3,10 +3,11 @@ import styles from "../styles/Card.module.css";
 
 type CardProps = {
   title: string;
+  desc: string;
   imgPath: string;
 };
 
-export default function Card({ title, imgPath }: CardProps) {
+export default function DeckCard({ title, desc, imgPath }: CardProps) {
   return (
     <div className={styles.card + " fadeIn"}>
       <div className={styles.imgBx}>
@@ -17,25 +18,20 @@ export default function Card({ title, imgPath }: CardProps) {
         )}
       </div>
       <div className={styles.contentBx}>
-        <h2>{title}</h2>
+        <h1>{title}</h1>
+        <p>{desc}</p>
         <div className={styles.size}>
-          <h3>Size:</h3>
+          <h2>Size:</h2>
           <span>7</span>
+          <span>7.5</span>
           <span>8</span>
-          <span>9</span>
-          <span>10</span>
+          <span>8.5</span>
         </div>
 
-        <div className={styles.color}>
-          <h3>Color:</h3>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
         <span>
           <a href="#">View Details</a>
           <a href="#" className={styles.cardBtn}>
-            Buy Now
+            Add to Cart
           </a>
         </span>
       </div>

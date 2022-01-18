@@ -1,5 +1,3 @@
-/** --------------- SHOP CARDS --------------- **/
-
 .card {
     position: relative;
     display: block;
@@ -13,7 +11,7 @@
 
 }
 
-/* image box */
+/** --------------- IMAGE BOX --------------- **/
 .card .imgBx {
     position: relative;
 
@@ -26,19 +24,38 @@
 
 .card .imgBx img {
     object-fit: contain;
+}
+
+.card .imgBx .deckImg img {
     rotate: 45deg;
     scale: 1.3;
 }
 
-/* content box */
+/** --------------- CONTENT BOX --------------- **/
 .card .contentBx {
     font-weight: 600;
     letter-spacing: 1px;
     text-align: center;
     top: 150px;
-
-    text-align: center;
     padding: 2rem;
+}
+
+.card .contentBx h1 {
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.card .contentBx h2 {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.card .contentBx p {
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
 }
 
 .card .contentBx span {
@@ -54,7 +71,6 @@
     background: #fff;
     border-radius: 4px;
     text-decoration: none;
-    font-weight: 600;
     color: #111;
 }
 
@@ -63,33 +79,22 @@
     text-decoration: none;
 }
 
-.card .contentBx .size,
-.card .contentBx .color {
+.card .contentBx .size {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 20px;
-    transition: 0.5s;
-}
-
-.card .contentBx .size h3,
-.card .contentBx .color h3 {
-    font-weight: 500;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-right: 10px;
+    margin-top: 1rem;
 }
 
 .card .contentBx .size span {
-    width: 26px;
+    width: 31px;
     height: 26px;
-    text-align: center;
+    padding-bottom: .5px;
     line-height: 26px;
     font-size: 14px;
     display: inline-block;
     background: #fff;
-    margin: 0 5px;
+    margin: 0 6px;
     transition: 0.5s;
     border-radius: 4px;
     color: var(--color-black);
@@ -101,6 +106,8 @@
     background: silver;
     transition: 0.2s;
 }
+
+/** --------------- TRUCK COLORS --------------- **/
 
 .card .contentBx .color span {
     width: 20px;
