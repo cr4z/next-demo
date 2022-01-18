@@ -6,9 +6,9 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faUser, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import ProductView from "../components/ProductView";
+import ProductView from "../components/productView";
 
-export default function Shop({ children }: any) {
+export default function Shop() {
   const [mouseIsOnDiv, setMouseIsOnDiv] = useState<Boolean>(false);
   const dropdownRef = useRef<any>(null);
   const conditionalStyle = 4;

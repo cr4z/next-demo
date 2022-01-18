@@ -4,7 +4,6 @@ import Card from "./card";
 interface IProps {
   selectedProduct: string;
 }
-
 export default function ProductView({ selectedProduct }: IProps): ReactElement {
   useEffect(() => {
     async function getProducts() {
