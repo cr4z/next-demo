@@ -78,9 +78,9 @@
 }
 
 .card .contentBx .size span {
-    width: 31px;
+    width: fit-content;
+    padding: 0px 5px .5px 5px;
     height: 26px;
-    padding-bottom: .5px;
     line-height: 26px;
     font-size: 14px;
     display: inline-block;
@@ -109,7 +109,7 @@
 }
 
 .bottomBar .innerBottomBar {
-    padding: 1rem;
+    padding: 0rem 1rem 1rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -127,6 +127,7 @@
 /** --------------- TRUCK COLORS --------------- **/
 
 .card .contentBx .color {
+    margin-top: .5rem;
     display: flex;
     justify-content: center;
 }

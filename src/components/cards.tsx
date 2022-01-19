@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 import styles from "../styles/Card.module.css";
 
 type CardProps = {
@@ -13,7 +14,7 @@ export function DeckCard({ title, desc, imgPath, price }: CardProps) {
     <div className={styles.card + " fadeIn"}>
       <div className={styles.deckImgBx}>
         {imgPath ? (
-          <Image className="fadeIn" src={imgPath} layout="fill" alt="trucks" />
+          <Image className="fadeIn" src={imgPath} layout="fill" alt="deck" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -41,7 +42,13 @@ export function DeckCard({ title, desc, imgPath, price }: CardProps) {
   );
 }
 
-export function TrucksCard({ title, desc, imgPath }: CardProps) {
+export function TrucksCard({ title, desc, price }: CardProps) {
+  const whiteTrucks = "/images/trucks_white.png";
+  const blackTrucks = "/images/trucks_black.png";
+  const silverTrucks = "/images/trucks_silver.png";
+
+  const [imgPath, setImgPath] = useState<string>(whiteTrucks);
+
   return (
     <div className={styles.card + " fadeIn"}>
       <div className={styles.imgBx}>
@@ -56,35 +63,35 @@ export function TrucksCard({ title, desc, imgPath }: CardProps) {
         <p>{desc}</p>
         <div className={styles.size}>
           <h2>Size:</h2>
-          <span>7</span>
-          <span>7.5</span>
-          <span>8</span>
-          <span>8.5</span>
+          <span>5</span>
+          <span>5.25</span>
+          <span>5.5</span>
         </div>
         <span className={styles.color}>
           <h2>Color:</h2>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span onClick={() => setImgPath(whiteTrucks)}></span>
+          <span onClick={() => setImgPath(blackTrucks)}></span>
+          <span onClick={() => setImgPath(silverTrucks)}></span>
         </span>
-
-        <span>
-          <a href="#">View Details</a>
+      </div>
+      <div className={styles.bottomBar}>
+        <div className={styles.innerBottomBar}>
+          <h1>${price}</h1>
           <a href="#" className={styles.cardBtn}>
             Add to Cart
           </a>
-        </span>
+        </div>
       </div>
     </div>
   );
 }
 
-export function WheelsCard({ title, desc, imgPath }: CardProps) {
+export function WheelsCard({ title, desc, imgPath, price }: CardProps) {
   return (
     <div className={styles.card + " fadeIn"}>
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image className="fadeIn" src={imgPath} layout="fill" alt="trucks" />
+          <Image className="fadeIn" src={imgPath} layout="fill" alt="wheels" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -94,29 +101,29 @@ export function WheelsCard({ title, desc, imgPath }: CardProps) {
         <p>{desc}</p>
         <div className={styles.size}>
           <h2>Size:</h2>
-          <span>7</span>
-          <span>7.5</span>
-          <span>8</span>
-          <span>8.5</span>
+          <span>52mm</span>
+          <span>53mm</span>
+          <span>54mm</span>
         </div>
-
-        <span>
-          <a href="#">View Details</a>
+      </div>
+      <div className={styles.bottomBar}>
+        <div className={styles.innerBottomBar}>
+          <h1>${price}</h1>
           <a href="#" className={styles.cardBtn}>
             Add to Cart
           </a>
-        </span>
+        </div>
       </div>
     </div>
   );
 }
 
-export function BearingsCard({ title, desc, imgPath }: CardProps) {
+export function BearingsCard({ title, desc, imgPath, price }: CardProps) {
   return (
     <div className={styles.card + " fadeIn"}>
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image className="fadeIn" src={imgPath} layout="fill" alt="trucks" />
+          <Image className="fadeIn" src={imgPath} layout="fill" alt="bearings" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -124,20 +131,14 @@ export function BearingsCard({ title, desc, imgPath }: CardProps) {
       <div className={styles.contentBx}>
         <h1>{title}</h1>
         <p>{desc}</p>
-        <div className={styles.size}>
-          <h2>Size:</h2>
-          <span>7</span>
-          <span>7.5</span>
-          <span>8</span>
-          <span>8.5</span>
-        </div>
-
-        <span>
-          <a href="#">View Details</a>
+      </div>
+      <div className={styles.bottomBar}>
+        <div className={styles.innerBottomBar}>
+          <h1>${price}</h1>
           <a href="#" className={styles.cardBtn}>
             Add to Cart
           </a>
-        </span>
+        </div>
       </div>
     </div>
   );
