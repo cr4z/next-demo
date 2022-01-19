@@ -21,6 +21,7 @@
 }
 
 .card .imgBx img {
+    -o-object-fit: contain;
     object-fit: contain;
 }
 
@@ -31,6 +32,7 @@
 }
 
 .card .deckImgBx img {
+    -o-object-fit: contain;
     object-fit: contain;
     rotate: 45deg;
     scale: 1.3;
