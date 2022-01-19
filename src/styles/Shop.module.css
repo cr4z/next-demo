@@ -192,6 +192,10 @@
     box-shadow: inset 0px 0px 12px -4px #0008;
 }
 
+.filterBx div {
+    font-style: italic;
+}
+
 .filterBx .color {
     display: flex;
     justify-content: center;

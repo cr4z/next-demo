@@ -151,12 +151,21 @@ export default function Shop() {
         </div>
 
         <div className={styles.filterBx} style={{ height: filterHeight }}>
-          <span className={styles.color}>
-            <p>Select Color:</p>
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+          {
+            {
+              decks: (
+                <span className={styles.color}>
+                  <p>Select Color:</p>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              ),
+              trucks: <div>No filter options available</div>,
+              wheels: <div>No filter options available</div>,
+              bearings: <div>No filter options available</div>,
+            }[selectedCategory]
+          }
         </div>
 
         <div className={styles.sortBx} style={{ height: sortHeight }}>
