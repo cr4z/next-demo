@@ -87,7 +87,6 @@
 
 .shopControls a {
     color: var(--color-black);
-    text-decoration: none;
 }
 
 .shopControls a span {
@@ -117,11 +116,9 @@
 
     position: absolute;
     z-index: 10000;
-    list-style-type: none;
     padding: 0;
     background-color: white;
     box-shadow: var(--box-shadow);
-    text-align: center;
 
     top: 1.1rem;
     left: 50%;
@@ -131,28 +128,7 @@
     transition: all .3s ease-in-out;
 }
 
-.dropdown li a {
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    color: var(--color-black);
-    padding: 1.5rem 0px;
-}
 
-.dropdown li a:after {
-    content: '';
-    position: absolute;
-    width: 50%;
-    height: 1px;
-    transform: scaleX(0) translateY(1.8rem);
-    left: 25%;
-    background-color: var(--color-black);
-    transition: transform 0.3s ease-out;
-}
-
-.dropdown li a:hover:after {
-    transform: scaleX(1) translateY(1.8rem);
-}
 
 /** --------------- RESPONSIVE ELEMENTS --------------- **/
 
@@ -210,7 +186,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all .3s ease-in-out;
+    transition: all .3s ease;
     overflow: hidden;
     height: 0px;
     box-shadow: inset 0px 0px 12px -4px #0008;
@@ -243,4 +219,14 @@
 .filterBx .color span:nth-child(4) {
     background-color: white;
 
+}
+
+/** --------------- SORT --------------- **/
+
+.sortBx {
+    display: flex;
+    transition: all .3s ease;
+    overflow: hidden;
+    height: 0px;
+    box-shadow: inset 0px 0px 12px -4px #0008;
 }

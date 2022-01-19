@@ -9,8 +9,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import ProductView from "../components/productView";
 
 export default function Shop() {
-  const dropdownRef = useRef<any>(null);
-
   const [selectedCategory, setSelectedCategory] = useState<string>("decks");
 
   const [mouseIsOnFilterBtn, setMouseIsOnFilterBtn] = useState<Boolean>(false);
@@ -18,41 +16,61 @@ export default function Shop() {
   const [mouseIsOnSortBtn, setMouseIsOnSortBtn] = useState<Boolean>(false);
 
   const [filterOpen, setFilterOpen] = useState<Boolean>(false);
-  const [rotateMenuIcon, setRotateMenuIcon] = useState<Boolean>(false);
-  const [rotateSortIcon, setRotateSortIcon] = useState<Boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<Boolean>(false);
+  const [sortOpen, setSortOpen] = useState<Boolean>(false);
 
-  const [height, setHeight] = useState<string>();
+  const [filterHeight, setFilterHeight] = useState<string>();
+  const [menuHeight, setMenuHeight] = useState<string>();
+  const [sortHeight, setSortHeight] = useState<string>();
 
-  function onMenuBtnClick() {
-    if (dropdownRef.current.style.height === "" && mouseIsOnMenuBtn) {
-      setRotateMenuIcon(true);
-      dropdownRef.current.style.height = "300px";
-    } else {
-      setRotateMenuIcon(false);
-      dropdownRef.current.style.height = "";
+  function onAllClicks() {
+    if (menuOpen) {
+      setMenuOpen(false);
+      setMenuHeight("0px");
+    }
+    if (!menuOpen && mouseIsOnMenuBtn) {
+      setSortOpen(false);
+      setSortHeight("0px");
+      setFilterOpen(false);
+      setFilterHeight("0px");
+
+      setMenuOpen(true);
+      setMenuHeight("300px");
     }
   }
 
   function onFilterBtnClick() {
+    setSortOpen(false);
+    setSortHeight("0px");
+
     if (mouseIsOnFilterBtn) {
       if (filterOpen) {
         setFilterOpen(false);
-        setHeight("0px");
+        setFilterHeight("0px");
       } else {
         setFilterOpen(true);
-        setHeight("3rem");
+        setFilterHeight("3rem");
       }
     }
   }
 
   function onSortBtnClick() {
+    setFilterOpen(false);
+    setFilterHeight("0px");
+
     if (mouseIsOnSortBtn) {
-      setRotateSortIcon(!rotateSortIcon);
+      if (sortOpen) {
+        setSortOpen(false);
+        setSortHeight("0px");
+      } else {
+        setSortOpen(true);
+        setSortHeight("7rem");
+      }
     }
   }
 
   return (
-    <div className={styles.backgroundCity} onMouseDown={() => onMenuBtnClick()}>
+    <div className={styles.backgroundCity} onMouseDown={() => onAllClicks()}>
       <header className={styles.header}>
         <div></div>
 
@@ -96,13 +114,14 @@ export default function Shop() {
               {selectedCategory}
               <FontAwesomeIcon
                 className={styles.dropdownArrow + " has-transition"}
-                style={
-                  rotateMenuIcon ? { transform: "rotate(90deg)" } : { transform: "rotate(0deg)" }
-                }
+                style={menuOpen ? { transform: "rotate(90deg)" } : { transform: "rotate(0deg)" }}
                 size="sm"
                 icon={faChevronRight}
               />
-              <ul className={styles.dropdown} ref={dropdownRef}>
+              <ul
+                className={styles.dropdown + " fancyul"}
+                style={{ marginTop: "1.2rem", height: menuHeight }}
+              >
                 <li onClick={() => setSelectedCategory("decks")}>
                   <a>decks</a>
                 </li>
@@ -131,7 +150,7 @@ export default function Shop() {
           </div>
         </div>
 
-        <div className={styles.filterBx} style={{ height: height }}>
+        <div className={styles.filterBx} style={{ height: filterHeight }}>
           <span className={styles.color}>
             <p>Select Color:</p>
             <span></span>
@@ -140,7 +159,16 @@ export default function Shop() {
           </span>
         </div>
 
-        {rotateSortIcon && <div>whats good</div>}
+        <div className={styles.sortBx} style={{ height: sortHeight }}>
+          <ul className="fancyul">
+            <li onClick={() => {}}>
+              <a>Price: Low to High</a>
+            </li>
+            <li onClick={() => {}}>
+              <a>Price: High to Low</a>
+            </li>
+          </ul>
+        </div>
 
         <div className={styles.grid}>
           <ProductView selectedProduct={selectedCategory} />

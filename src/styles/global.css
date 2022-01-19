@@ -34,3 +34,45 @@ p {
 .has-transition {
     transition: all .1s ease;
 }
+
+
+.fancyul {
+    font-family: var(--label-font);
+    letter-spacing: 1px;
+    font-size: 20px;
+    text-transform: uppercase;
+    list-style-type: none;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.fancyul li a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-black);
+    width: 100%;
+    padding: 1rem 0px;
+    cursor: pointer;
+}
+
+.fancyul li a:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 1px;
+    transform: scaleX(0) translateY(1.8rem);
+    left: 25%;
+    background-color: var(--color-black);
+    transition: transform 0.3s ease-out;
+}
+
+.fancyul li a:hover:after {
+    transform: scaleX(1) translateY(1.8rem);
+}
