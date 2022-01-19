@@ -73,11 +73,16 @@
     text-transform: uppercase;
 
     padding: 0 1rem;
+    box-shadow: var(--box-shadow);
 }
 
 .shopControls div {
     margin-top: .3rem;
     margin-bottom: .4rem;
+}
+
+.shopControls div a {
+    cursor: pointer;
 }
 
 .shopControls a {
@@ -104,7 +109,6 @@
     display: inline-flex;
     margin-left: 5px;
     margin-bottom: 1px;
-    transition: all .1s ease;
 }
 
 .dropdown {
@@ -156,7 +160,8 @@
 @media only screen and (min-width : 640px) {
 
     .shopContent,
-    .header {
+    .header,
+    .footer {
         width: 80vw;
         margin: auto;
     }
@@ -167,13 +172,20 @@
     }
 }
 
+
+
 /* TVs (maximum) ----------- */
 @media only screen and (min-width : 1824px) {
 
     .shopContent,
-    .header {
+    .header,
+    .footer {
         width: 60vw;
         margin: auto;
+    }
+
+    .footerContent {
+        padding: 1rem 60vw;
     }
 }
 
@@ -182,6 +194,53 @@
 
 .footer {
     color: white;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
+}
+
+.footerContent {
+    background-color: #0009;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/** --------------- FILTER --------------- **/
+
+.filterBx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    height: 0px;
+    box-shadow: inset 0px 0px 12px -4px #0008;
+}
+
+.filterBx .color {
+    display: flex;
+    justify-content: center;
+}
+
+.filterBx .color span {
+    width: 20px;
+    height: 20px;
+    background: #ff0;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid var(--color-black);
+    transition: 0.5s;
+}
+
+.filterBx .color span:nth-child(2) {
+    background: black;
+}
+
+.filterBx .color span:nth-child(3) {
+    background: goldenrod;
+}
+
+.filterBx .color span:nth-child(4) {
+    background-color: white;
+
 }
