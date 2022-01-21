@@ -1,5 +1,6 @@
 import React, { useState, useRef, Children, ReactElement, useEffect } from "react";
 import styles from "../styles/Shop.module.css";
+import gridStyle from "../styles/Grid.module.css";
 const logo = "/images/logo.png";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faUser, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ProductView from "../components/productView";
+import "../utils/helpers";
+import { getNewArrayWithout } from "../utils/helpers";
+import { SortRule } from "../types/sortRule";
 
 export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState<string>("decks");
@@ -22,6 +26,9 @@ export default function Shop() {
   const [filterHeight, setFilterHeight] = useState<string>();
   const [menuHeight, setMenuHeight] = useState<string>();
   const [sortHeight, setSortHeight] = useState<string>();
+
+  const [filterParams, setFilterParams] = useState<string[]>([]);
+  const [sortRule, setSortRule] = useState<SortRule>(SortRule.none);
 
   function onAllClicks() {
     if (menuOpen) {
@@ -54,6 +61,40 @@ export default function Shop() {
     }
   }
 
+  const [filterBlackActive, setFilterBlackActive] = useState<boolean>(false);
+  const [filterYellowActive, setFilterYellowActive] = useState<boolean>(false);
+  const [filterWhiteActive, setFilterWhiteActive] = useState<boolean>(false);
+  function toggleBlack() {
+    const color = "black";
+    if (filterParams.includes(color)) {
+      setFilterBlackActive(false);
+      setFilterParams(getNewArrayWithout(color, filterParams));
+    } else {
+      setFilterBlackActive(true);
+      setFilterParams([...filterParams, color]);
+    }
+  }
+  function toggleYellow() {
+    const color = "yellow";
+    if (filterParams.includes(color)) {
+      setFilterYellowActive(false);
+      setFilterParams(getNewArrayWithout(color, filterParams));
+    } else {
+      setFilterYellowActive(true);
+      setFilterParams([...filterParams, color]);
+    }
+  }
+  function toggleWhite() {
+    const color = "white";
+    if (filterParams.includes(color)) {
+      setFilterWhiteActive(false);
+      setFilterParams(getNewArrayWithout(color, filterParams));
+    } else {
+      setFilterWhiteActive(true);
+      setFilterParams([...filterParams, color]);
+    }
+  }
+
   function onSortBtnClick() {
     setFilterOpen(false);
     setFilterHeight("0px");
@@ -74,10 +115,12 @@ export default function Shop() {
       <header className={styles.header}>
         <div></div>
 
-        <div className={styles.logoContainer + " fadeIn"}>
-          <Link href="/" passHref={true}>
-            <Image src={logo} layout="fill" alt="logo" priority />
-          </Link>
+        <div>
+          <div className={styles.logoContainer}>
+            <Link href="/" passHref={true}>
+              <Image className="fade-in" src={logo} layout="fill" alt="logo" priority />
+            </Link>
+          </div>
         </div>
 
         <div>
@@ -89,12 +132,12 @@ export default function Shop() {
 
       <section className={styles.shopContent}>
         <div className={styles.shopControls}>
-          <div>
-            <a
-              onMouseEnter={() => setMouseIsOnFilterBtn(true)}
-              onMouseLeave={() => setMouseIsOnFilterBtn(false)}
-              onClick={() => onFilterBtnClick()}
-            >
+          <div
+            onMouseEnter={() => setMouseIsOnFilterBtn(true)}
+            onMouseLeave={() => setMouseIsOnFilterBtn(false)}
+            onClick={() => onFilterBtnClick()}
+          >
+            <a>
               <span>Filter</span>
               <FontAwesomeIcon
                 className="has-transition"
@@ -138,12 +181,12 @@ export default function Shop() {
             </div>
           </div>
 
-          <div>
-            <a
-              onMouseEnter={() => setMouseIsOnSortBtn(true)}
-              onMouseLeave={() => setMouseIsOnSortBtn(false)}
-              onClick={() => onSortBtnClick()}
-            >
+          <div
+            onMouseEnter={() => setMouseIsOnSortBtn(true)}
+            onMouseLeave={() => setMouseIsOnSortBtn(false)}
+            onClick={() => onSortBtnClick()}
+          >
+            <a>
               <span>Sort</span>
               <FontAwesomeIcon icon={faBars} size="sm" />
             </a>
@@ -156,9 +199,18 @@ export default function Shop() {
               decks: (
                 <span className={styles.color}>
                   <p>Select Color:</p>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                  <span
+                    style={filterBlackActive ? { borderColor: "green" } : {}}
+                    onClick={() => toggleBlack()}
+                  ></span>
+                  <span
+                    style={filterYellowActive ? { borderColor: "green" } : {}}
+                    onClick={() => toggleYellow()}
+                  ></span>
+                  <span
+                    style={filterWhiteActive ? { borderColor: "green" } : {}}
+                    onClick={() => toggleWhite()}
+                  ></span>
                 </span>
               ),
               trucks: <div>No filter options available</div>,
@@ -170,17 +222,29 @@ export default function Shop() {
 
         <div className={styles.sortBx} style={{ height: sortHeight }}>
           <ul className="fancyul">
-            <li onClick={() => {}}>
+            <li
+              onClick={() => {
+                setSortRule(SortRule.priceLowToHigh);
+              }}
+            >
               <a>Price: Low to High</a>
             </li>
-            <li onClick={() => {}}>
+            <li
+              onClick={() => {
+                setSortRule(SortRule.priceHighToLow);
+              }}
+            >
               <a>Price: High to Low</a>
             </li>
           </ul>
         </div>
 
-        <div className={styles.grid}>
-          <ProductView selectedProduct={selectedCategory} />
+        <div className={gridStyle.grid}>
+          <ProductView
+            selectedProduct={selectedCategory}
+            filterParams={filterParams}
+            sortRule={sortRule}
+          />
         </div>
       </section>
 

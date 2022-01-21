@@ -7,11 +7,12 @@ type CardProps = {
   desc: string;
   imgPath: string;
   price: string;
+  i: number;
 };
 
-export function DeckCard({ title, desc, imgPath, price }: CardProps) {
+export function DeckCard({ title, desc, imgPath, price, i }: CardProps) {
   return (
-    <div className={styles.card + " fadeIn"}>
+    <div className={styles.card + " fadeIn "} style={{ animationDelay: `${100 * i}ms` }}>
       <div className={styles.deckImgBx}>
         {imgPath ? (
           <Image className="fadeIn" src={imgPath} layout="fill" alt="deck" />

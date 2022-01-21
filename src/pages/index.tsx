@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 const video = "/videos/PexelsVideos2282013.mp4";
 const logo = "/images/logo.png";
-import styles from "../styles/Splash.module.css";
+import styles from "../styles/Index.module.css";
 
 export default function Splash() {
   return (
@@ -15,9 +15,9 @@ export default function Splash() {
           <Image width={650} height={550} className={styles.img} src={logo} alt="logo" priority />
         </div>
 
-        <div className={styles.btnContainer}>
+        <div className={styles.clickyBtn}>
           <Link href="/shop">
-            <a className={styles.btn}>View Shop</a>
+            <a>View Shop</a>
           </Link>
         </div>
       </div>

@@ -24,13 +24,19 @@
 .logoContainer {
     position: absolute;
 
+    top: 6px;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 290px;
-    height: 290px;
+    width: 250px;
+    height: 150px;
+    scale: .8;
     cursor: pointer;
+}
+
+.logoContainer img {
+    object-fit: cover;
 }
 
 .icons {
@@ -49,13 +55,6 @@
     opacity: 0.95;
 }
 
-.grid {
-    display: grid;
-    padding: 1rem;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-}
-
 /** --------------- SHOP CONTROLS --------------- **/
 
 .shopControls {
@@ -72,16 +71,17 @@
     font-size: 20px;
     text-transform: uppercase;
 
-    padding: 0 1rem;
     box-shadow: var(--box-shadow);
 }
 
 .shopControls div {
-    margin-top: .3rem;
-    margin-bottom: .4rem;
-}
+    width: 10rem;
+    white-space: nowrap;
+    height: 3rem;
 
-.shopControls div a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -183,10 +183,10 @@
 /** --------------- FILTER --------------- **/
 
 .filterBx {
+    transition: all .3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all .3s ease;
     overflow: hidden;
     height: 0px;
     box-shadow: inset 0px 0px 12px -4px #0008;
@@ -209,7 +209,6 @@
     margin: 0 5px;
     cursor: pointer;
     border: 2px solid var(--color-black);
-    transition: 0.5s;
 }
 
 .filterBx .color span:nth-child(2) {
