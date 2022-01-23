@@ -11,8 +11,9 @@ type CardProps = {
 };
 
 export function DeckCard({ title, desc, imgPath, price, i }: CardProps) {
+  console.log(i);
   return (
-    <div className={styles.card + " fadeIn "} style={{ animationDelay: `${100 * i}ms` }}>
+    <div className={styles.card} style={{ animationDelay: `${100 * i}ms` }}>
       <div className={styles.deckImgBx}>
         {imgPath ? (
           <Image className="fadeIn" src={imgPath} layout="fill" alt="deck" />
@@ -43,7 +44,7 @@ export function DeckCard({ title, desc, imgPath, price, i }: CardProps) {
   );
 }
 
-export function TrucksCard({ title, desc, price }: CardProps) {
+export function TrucksCard({ title, desc, price, i }: CardProps) {
   const whiteTrucks = "/images/trucks_white.png";
   const blackTrucks = "/images/trucks_black.png";
   const silverTrucks = "/images/trucks_silver.png";
@@ -51,7 +52,8 @@ export function TrucksCard({ title, desc, price }: CardProps) {
   const [imgPath, setImgPath] = useState<string>(whiteTrucks);
 
   return (
-    <div className={styles.card + " fadeIn"}>
+    <div className={styles.card} style={{ animationDelay: `${100 * i}ms` }}>
+      {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
           <Image className="fadeIn" src={imgPath} layout="fill" alt="trucks" />
@@ -87,9 +89,10 @@ export function TrucksCard({ title, desc, price }: CardProps) {
   );
 }
 
-export function WheelsCard({ title, desc, imgPath, price }: CardProps) {
+export function WheelsCard({ title, desc, imgPath, price, i }: CardProps) {
   return (
-    <div className={styles.card + " fadeIn"}>
+    <div className={styles.card} style={{ animationDelay: `${100 * i}ms` }}>
+      {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
           <Image className="fadeIn" src={imgPath} layout="fill" alt="wheels" />
@@ -119,9 +122,10 @@ export function WheelsCard({ title, desc, imgPath, price }: CardProps) {
   );
 }
 
-export function BearingsCard({ title, desc, imgPath, price }: CardProps) {
+export function BearingsCard({ title, desc, imgPath, price, i }: CardProps) {
   return (
-    <div className={styles.card + " fadeIn"}>
+    <div className={styles.card} style={{ animationDelay: `${100 * i}ms` }}>
+      {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
           <Image className="fadeIn" src={imgPath} layout="fill" alt="bearings" />

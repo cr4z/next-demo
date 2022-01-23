@@ -12,7 +12,7 @@ export default function ProductView({
   filterParams,
   sortRule,
 }: IProps): ReactElement {
-  // on render, populate productArray
+  //* on render, populate productArray *//
   useEffect(() => {
     async function getProducts() {
       const url = `/api/products/?category=${selectedProduct}`;
@@ -51,7 +51,6 @@ export default function ProductView({
       }
     }
     getProducts();
-    console.log("i rly done rerendered")
   }, [selectedProduct, sortRule]);
 
   const [productArray, setProductArray] = useState<any>(null);
@@ -64,7 +63,6 @@ export default function ProductView({
             if (!filterParams.includes(product.color)) {
               if (filterParams.length != 0) return;
             }
-            console.log("GETTING NEW CARDS!", index);
             return (
               <DeckCard
                 key={index}

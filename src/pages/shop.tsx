@@ -1,4 +1,4 @@
-import React, { useState, useRef, Children, ReactElement, useEffect } from "react";
+import React, { useState, useRef, Children, ReactElement, useEffect, useMemo } from "react";
 import styles from "../styles/Shop.module.css";
 import gridStyle from "../styles/Grid.module.css";
 const logo = "/images/logo.png";
@@ -29,6 +29,16 @@ export default function Shop() {
 
   const [filterParams, setFilterParams] = useState<string[]>([]);
   const [sortRule, setSortRule] = useState<SortRule>(SortRule.none);
+
+  const memoizedProductView = useMemo(() => {
+    return (
+      <ProductView
+        selectedProduct={selectedCategory}
+        filterParams={filterParams}
+        sortRule={sortRule}
+      />
+    );
+  }, [filterParams, selectedCategory, sortRule]);
 
   function onAllClicks() {
     if (menuOpen) {
@@ -239,13 +249,7 @@ export default function Shop() {
           </ul>
         </div>
 
-        <div className={gridStyle.grid}>
-          <ProductView
-            selectedProduct={selectedCategory}
-            filterParams={filterParams}
-            sortRule={sortRule}
-          />
-        </div>
+        <div className={gridStyle.grid}>{memoizedProductView}</div>
       </section>
 
       <footer className={styles.footer}>
