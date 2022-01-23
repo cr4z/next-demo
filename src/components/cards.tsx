@@ -11,7 +11,6 @@ type CardProps = {
 };
 
 export function DeckCard({ title, desc, imgPath, price, i }: CardProps) {
-  console.log(i);
   return (
     <div className={styles.card} style={{ animationDelay: `${100 * i}ms` }}>
       <div className={styles.deckImgBx}>
@@ -20,8 +19,7 @@ export function DeckCard({ title, desc, imgPath, price, i }: CardProps) {
             className="fadeIn"
             src={imgPath}
             layout="fill"
-            placeholder="blur"
-            blurDataURL={imgPath}
+            placeholder="empty"
             alt="deck"
             priority
           />
@@ -68,8 +66,7 @@ export function TrucksCard({ title, desc, price, i }: CardProps) {
             className="fadeIn"
             src={imgPath}
             layout="fill"
-            placeholder="blur"
-            blurDataURL={imgPath}
+            placeholder="empty"
             alt="trucks"
             priority
           />
@@ -115,8 +112,7 @@ export function WheelsCard({ title, desc, imgPath, price, i }: CardProps) {
             className="fadeIn"
             src={imgPath}
             layout="fill"
-            placeholder="blur"
-            blurDataURL={imgPath}
+            placeholder="empty"
             alt="wheels"
             priority
           />
@@ -156,8 +152,7 @@ export function BearingsCard({ title, desc, imgPath, price, i }: CardProps) {
             className="fadeIn"
             src={imgPath}
             layout="fill"
-            placeholder="blur"
-            blurDataURL={imgPath}
+            placeholder="empty"
             alt="bearings"
             priority
           />

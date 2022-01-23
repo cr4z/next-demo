@@ -12,9 +12,10 @@ export default function ProductView({
   filterParams,
   sortRule,
 }: IProps): ReactElement {
-  //* on render, populate productArray *//
   useEffect(() => {
     async function getProducts() {
+      //* 1) get products *//
+
       const url = `/api/products/?category=${selectedProduct}`;
       const options = {
         method: "GET",
@@ -24,6 +25,7 @@ export default function ProductView({
       };
       const res = await fetch(url, options);
       if (res.status == 400) {
+        //! fail !//
         console.log("Category was not found in database");
       } else {
         //* success *//
@@ -53,13 +55,16 @@ export default function ProductView({
     getProducts();
   }, [selectedProduct, sortRule]);
 
-  const [productArray, setProductArray] = useState<any>(null);
+  //* 2) set product array *//
+  const [productArray, setProductArray] = useState<[]>([]);
 
-  return (
-    <>
-      {productArray &&
-        {
-          decks: productArray.map((product: any, index: any) => {
+  //* 3) display with switch statement *//
+
+  switch (selectedProduct) {
+    case "decks":
+      return (
+        <>
+          {productArray.map((product: any, index: any) => {
             if (!filterParams.includes(product.color)) {
               if (filterParams.length != 0) return;
             }
@@ -73,8 +78,13 @@ export default function ProductView({
                 i={index}
               />
             );
-          }),
-          trucks: productArray.map((product: any, index: any) => {
+          })}
+        </>
+      );
+    case "trucks":
+      return (
+        <>
+          {productArray.map((product: any, index: any) => {
             return (
               <TrucksCard
                 key={index}
@@ -85,8 +95,13 @@ export default function ProductView({
                 i={index}
               />
             );
-          }),
-          wheels: productArray.map((product: any, index: any) => {
+          })}
+        </>
+      );
+    case "wheels":
+      return (
+        <>
+          {productArray.map((product: any, index: any) => {
             return (
               <WheelsCard
                 key={index}
@@ -97,8 +112,13 @@ export default function ProductView({
                 i={index}
               />
             );
-          }),
-          bearings: productArray.map((product: any, index: any) => {
+          })}
+        </>
+      );
+    case "bearings":
+      return (
+        <>
+          {productArray.map((product: any, index: any) => {
             return (
               <BearingsCard
                 key={index}
@@ -109,8 +129,10 @@ export default function ProductView({
                 i={index}
               />
             );
-          }),
-        }[selectedProduct]}
-    </>
-  );
+          })}
+        </>
+      );
+    default:
+      return <h1>Error, no component match</h1>;
+  }
 }
