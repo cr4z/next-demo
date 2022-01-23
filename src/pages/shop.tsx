@@ -5,7 +5,13 @@ const logo = "/images/logo.png";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faUser, faBars, faCog } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faUser,
+  faBars,
+  faCog,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ProductView from "../components/productView";
 import "../utils/helpers";
@@ -123,7 +129,11 @@ export default function Shop() {
   return (
     <div className={styles.backgroundCity} onMouseDown={() => onAllClicks()}>
       <header className={styles.header}>
-        <div></div>
+        <div className={styles.leftHeaderDiv}>
+          <a href="/cart">
+            <FontAwesomeIcon size="lg" icon={faShoppingCart} />
+          </a>
+        </div>
 
         <div>
           <div className={styles.logoContainer}>
@@ -133,8 +143,8 @@ export default function Shop() {
           </div>
         </div>
 
-        <div>
-          <a href="/user" className={styles.icons}>
+        <div className={styles.rightHeaderDiv}>
+          <a href="/user">
             <FontAwesomeIcon size="lg" icon={faUser} />
           </a>
         </div>

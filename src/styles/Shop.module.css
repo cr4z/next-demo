@@ -14,7 +14,6 @@
 
 .header div {
     flex: 0 0 33%;
-    text-align: end;
 }
 
 .header a {
@@ -39,7 +38,16 @@
     object-fit: cover;
 }
 
-.icons {
+.leftHeaderDiv {
+    text-align: start;
+}
+
+.rightHeaderDiv {
+    text-align: end;
+}
+
+.leftHeaderDiv a,
+.rightHeaderDiv a {
     padding: 1.5rem;
 }
 

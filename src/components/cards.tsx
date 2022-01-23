@@ -16,7 +16,15 @@ export function DeckCard({ title, desc, imgPath, price, i }: CardProps) {
     <div className={styles.card} style={{ animationDelay: `${100 * i}ms` }}>
       <div className={styles.deckImgBx}>
         {imgPath ? (
-          <Image className="fadeIn" src={imgPath} layout="fill" alt="deck" />
+          <Image
+            className="fadeIn"
+            src={imgPath}
+            layout="fill"
+            placeholder="blur"
+            blurDataURL={imgPath}
+            alt="deck"
+            priority
+          />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -56,7 +64,15 @@ export function TrucksCard({ title, desc, price, i }: CardProps) {
       {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image className="fadeIn" src={imgPath} layout="fill" alt="trucks" />
+          <Image
+            className="fadeIn"
+            src={imgPath}
+            layout="fill"
+            placeholder="blur"
+            blurDataURL={imgPath}
+            alt="trucks"
+            priority
+          />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -95,7 +111,15 @@ export function WheelsCard({ title, desc, imgPath, price, i }: CardProps) {
       {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image className="fadeIn" src={imgPath} layout="fill" alt="wheels" />
+          <Image
+            className="fadeIn"
+            src={imgPath}
+            layout="fill"
+            placeholder="blur"
+            blurDataURL={imgPath}
+            alt="wheels"
+            priority
+          />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -128,7 +152,15 @@ export function BearingsCard({ title, desc, imgPath, price, i }: CardProps) {
       {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image className="fadeIn" src={imgPath} layout="fill" alt="bearings" />
+          <Image
+            className="fadeIn"
+            src={imgPath}
+            layout="fill"
+            placeholder="blur"
+            blurDataURL={imgPath}
+            alt="bearings"
+            priority
+          />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
