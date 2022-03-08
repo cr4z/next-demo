@@ -129,24 +129,10 @@ export default function Shop() {
   return (
     <div className={styles.backgroundCity} onMouseDown={() => onAllClicks()}>
       <header className={styles.header}>
-        <div className={styles.leftHeaderDiv}>
-          <a href="/cart">
-            <FontAwesomeIcon size="lg" icon={faShoppingCart} />
-          </a>
-        </div>
-
-        <div>
-          <div className={styles.logoContainer}>
-            <Link href="/" passHref={true}>
-              <Image className="fade-in" src={logo} layout="fill" alt="logo" priority />
-            </Link>
-          </div>
-        </div>
-
-        <div className={styles.rightHeaderDiv}>
-          <a href="/user">
-            <FontAwesomeIcon size="lg" icon={faUser} />
-          </a>
+        <div className={styles.logoContainer}>
+          <Link href="/" passHref={true}>
+            <Image className="fade-in" src={logo} layout="fill" alt="logo" priority />
+          </Link>
         </div>
       </header>
 
