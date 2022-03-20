@@ -43,7 +43,6 @@ export default function Shop() {
         selectedProduct={selectedCategory}
         filterParams={filterParams}
         sortRule={sortRule}
-        id={Math.random()}
       />
     );
   }, [filterParams, selectedCategory, sortRule]);
