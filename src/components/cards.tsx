@@ -15,14 +15,7 @@ export function DeckCard({ title, desc, imgPath, price, i }: CardProps) {
     <div className={styles.card} style={{ animationDelay: `${100 * i}ms` }}>
       <div className={styles.deckImgBx}>
         {imgPath ? (
-          <Image
-            className="fadeIn"
-            src={imgPath}
-            layout="fill"
-            placeholder="empty"
-            alt="deck"
-            priority
-          />
+          <img className="fadeIn" src={imgPath} alt="deck" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -62,14 +55,7 @@ export function TrucksCard({ title, desc, price, i }: CardProps) {
       {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image
-            className="fadeIn"
-            src={imgPath}
-            layout="fill"
-            placeholder="empty"
-            alt="trucks"
-            priority
-          />
+          <img className="fadeIn" src={imgPath} alt="trucks" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -108,14 +94,7 @@ export function WheelsCard({ title, desc, imgPath, price, i }: CardProps) {
       {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image
-            className="fadeIn"
-            src={imgPath}
-            layout="fill"
-            placeholder="empty"
-            alt="wheels"
-            priority
-          />
+          <img className="fadeIn" src={imgPath} alt="wheels" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}
@@ -148,14 +127,7 @@ export function BearingsCard({ title, desc, imgPath, price, i }: CardProps) {
       {" "}
       <div className={styles.imgBx}>
         {imgPath ? (
-          <Image
-            className="fadeIn"
-            src={imgPath}
-            layout="fill"
-            placeholder="empty"
-            alt="bearings"
-            priority
-          />
+          <img className="fadeIn" src={imgPath} alt="bearings" />
         ) : (
           <h5>Image can&apos;t be displayed right now.</h5>
         )}

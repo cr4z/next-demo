@@ -6,11 +6,13 @@ interface IProps {
   selectedProduct: string;
   filterParams: string[];
   sortRule: SortRule;
+  id: number;
 }
 export default function ProductView({
   selectedProduct,
   filterParams,
   sortRule,
+  id,
 }: IProps): ReactElement {
   useEffect(() => {
     async function getProducts() {
