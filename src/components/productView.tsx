@@ -6,14 +6,16 @@ interface IProps {
   selectedProduct: string;
   filterParams: string[];
   sortRule: SortRule;
-  id: number;
 }
 export default function ProductView({
   selectedProduct,
   filterParams,
   sortRule,
-  id,
 }: IProps): ReactElement {
+  console.log("render");
+
+  const [productArray, setProductArray] = useState<[]>([]);
+
   useEffect(() => {
     async function getProducts() {
       //* 1) get products *//
@@ -57,84 +59,83 @@ export default function ProductView({
     getProducts();
   }, [selectedProduct, sortRule]);
 
-  //* 2) set product array *//
-  const [productArray, setProductArray] = useState<[]>([]);
-
   //* 3) display with switch statement *//
 
-  switch (selectedProduct) {
-    case "decks":
-      return (
-        <>
-          {productArray.map((product: any, index: any) => {
-            if (!filterParams.includes(product.color)) {
-              if (filterParams.length != 0) return;
-            }
-            return (
-              <DeckCard
-                key={index}
-                desc={product.desc}
-                title={product.name}
-                imgPath={product.imgPath}
-                price={product.price}
-                i={index}
-              />
-            );
-          })}
-        </>
-      );
-    case "trucks":
-      return (
-        <>
-          {productArray.map((product: any, index: any) => {
-            return (
-              <TrucksCard
-                key={index}
-                desc={product.desc}
-                title={product.name}
-                imgPath={product.imgPath}
-                price={product.price}
-                i={index}
-              />
-            );
-          })}
-        </>
-      );
-    case "wheels":
-      return (
-        <>
-          {productArray.map((product: any, index: any) => {
-            return (
-              <WheelsCard
-                key={index}
-                desc={product.desc}
-                title={product.name}
-                imgPath={product.imgPath}
-                price={product.price}
-                i={index}
-              />
-            );
-          })}
-        </>
-      );
-    case "bearings":
-      return (
-        <>
-          {productArray.map((product: any, index: any) => {
-            return (
-              <BearingsCard
-                key={index}
-                desc={product.desc}
-                title={product.name}
-                imgPath={product.imgPath}
-                price={product.price}
-                i={index}
-              />
-            );
-          })}
-        </>
-      );
-    default:
-      return <h1>Error, no component match</h1>;
-  }
+  if (productArray.length !== 0) {
+    switch (selectedProduct) {
+      case "decks":
+        return (
+          <>
+            {productArray.map((product: any, index: any) => {
+              if (!filterParams.includes(product.color)) {
+                if (filterParams.length != 0) return;
+              }
+              return (
+                <DeckCard
+                  key={index}
+                  desc={product.desc}
+                  title={product.name}
+                  imgPath={product.imgPath}
+                  price={product.price}
+                  i={index}
+                />
+              );
+            })}
+          </>
+        );
+      case "trucks":
+        return (
+          <>
+            {productArray.map((product: any, index: any) => {
+              return (
+                <TrucksCard
+                  key={index}
+                  desc={product.desc}
+                  title={product.name}
+                  imgPath={product.imgPath}
+                  price={product.price}
+                  i={index}
+                />
+              );
+            })}
+          </>
+        );
+      case "wheels":
+        return (
+          <>
+            {productArray.map((product: any, index: any) => {
+              return (
+                <WheelsCard
+                  key={index}
+                  desc={product.desc}
+                  title={product.name}
+                  imgPath={product.imgPath}
+                  price={product.price}
+                  i={index}
+                />
+              );
+            })}
+          </>
+        );
+      case "bearings":
+        return (
+          <>
+            {productArray.map((product: any, index: any) => {
+              return (
+                <BearingsCard
+                  key={index}
+                  desc={product.desc}
+                  title={product.name}
+                  imgPath={product.imgPath}
+                  price={product.price}
+                  i={index}
+                />
+              );
+            })}
+          </>
+        );
+      default:
+        return <h1>Error, no component match</h1>;
+    }
+  } else return <></>;
 }

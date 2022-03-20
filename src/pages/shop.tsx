@@ -37,6 +37,7 @@ export default function Shop() {
   const [sortRule, setSortRule] = useState<SortRule>(SortRule.none);
 
   const memoizedProductView = useMemo(() => {
+    console.log("memoizing");
     return (
       <ProductView
         selectedProduct={selectedCategory}
