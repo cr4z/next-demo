@@ -251,9 +251,11 @@ export default function Shop() {
 
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <span>Made by Steven F. Cruz</span>
+          <span>Made by Steven Bennett</span>
           <p>
-            <a href="mailto:stevencr7zz@gmail.com">StevenFCruz@gmail.com</a>
+            <a href="https://www.linkedin.com/in/sc-bennett/">
+              https://www.linkedin.com/in/sc-bennett/
+            </a>
           </p>
         </div>
       </footer>
